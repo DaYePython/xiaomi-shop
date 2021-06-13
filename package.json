@@ -4,7 +4,8 @@
     "dev": "vite --open",
     "build": "vite build",
     "serve": "vite preview",
-    "commit": "git add . && git cz"
+    "commit": "git add . && git cz",
+    "gen": "bash ./scripts/gc.sh"
   },
   "dependencies": {
     "axios": "^0.21.1",
