@@ -5,6 +5,8 @@ import { createApp } from 'vue'
 import 'normalize.css/normalize.css'
 import 'style/base/index.scss'
 
-const app = createApp(App)
+import layout from './plugin/layout'
 
+const app = createApp(App)
+app.use(layout)
 app.mount('#app')
