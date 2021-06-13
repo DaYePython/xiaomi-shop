@@ -1,22 +1,28 @@
 {
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vite build",
     "serve": "vite preview",
     "commit": "git add . && git cz"
   },
   "dependencies": {
-    "vue": "^3.0.5"
+    "vue": "^3.0.5",
+    "vue-router": "4",
+    "vuex": "^4.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.28.0",
     "husky": "^6.0.0",
-    "vite": "^2.3.7"
+    "typescript": "^4.3.2",
+    "vite": "^2.3.7",
+    "vue-tsc": "^0.1.7"
   },
   "config": {
     "commitizen": {
