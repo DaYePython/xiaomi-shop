@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import {resolve} from 'path'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,24 +8,21 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "@/style/tools/_sassMagic.scss";'
-      }
-    }
+        additionalData: `
+          @import "style/tools/_sassMagic.scss";
+          @import "style/settings/var.scss";
+        `,
+      },
+    },
   },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      'comp': resolve(__dirname, 'src', 'components'),
-      'style': resolve(__dirname, 'src', 'style')
-
-    }
+      comp: resolve(__dirname, 'src', 'components'),
+      style: resolve(__dirname, 'src', 'style'),
+    },
   },
   optimizeDeps: {
-    include: [
-      'vue',
-      'vuex',
-      'vue-router',
-      'axios'
-    ],
-  }
+    include: ['vue', 'vuex', 'vue-router', 'axios'],
+  },
 })
