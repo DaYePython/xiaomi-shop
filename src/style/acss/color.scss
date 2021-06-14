@@ -1,26 +1,27 @@
-@each $color
-  in (
-    white $white,
-    gray-50 $gray-50,
-    gray-100 $gray-100,
-    gray-200 $gray-200,
-    gray-300 $gray-300,
-    gray-400 $gray-400,
-    gray-500 $gray-500,
-    gray-600 $gray-600,
-    gray-700 $gray-700,
-    gray-800 $gray-800,
-    gray-900 $gray-900,
-    black $black
-  )
+@each $desc,
+  $color
+    in (
+      ('white' $white),
+      ('gray-50' $gray-50),
+      ('gray-100' $gray-100),
+      ('gray-200' $gray-200),
+      ('gray-300' $gray-300),
+      ('gray-400' $gray-400),
+      ('gray-500' $gray-500),
+      ('gray-600' $gray-600),
+      ('gray-700' $gray-700),
+      ('gray-800' $gray-800),
+      ('gray-900' $gray-900),
+      ('black' $black)
+    )
 {
-  [text-#{nth($color, 1)}] {
-    color: #{nth($color, 2)};
+  [text-#{$desc}] {
+    color: $color;
   }
-  [bg-#{nth($color, 1)}] {
-    background-color: #{nth($color, 2)};
+  [bg-#{$desc}] {
+    background-color: $color;
   }
-  [border-#{nth($color, 1)}] {
-    border-color: #{nth($color, 2)};
+  [border-#{$desc}] {
+    border-color: $color;
   }
 }

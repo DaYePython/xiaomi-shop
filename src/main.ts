@@ -3,7 +3,7 @@ import { createApp } from 'vue'
 
 // base css
 import 'normalize.css/normalize.css'
-import 'style/base/index.scss'
+import 'style/index.scss'
 
 import layout from './plugin/layout'
 
