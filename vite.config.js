@@ -11,6 +11,7 @@ export default defineConfig({
         additionalData: `
           @import "style/tools/_sassMagic.scss";
           @import "style/settings/var.scss";
+          @import "style/acss/index.scss";
         `,
       },
     },

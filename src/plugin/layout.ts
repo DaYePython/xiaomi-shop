@@ -1,5 +1,5 @@
 /**
- *  栅格系统全局导入插件
+ *  栅格系统和layout全局导入插件
  */
 import Col from 'vant/lib/col'
 import Row from 'vant/lib/row'
@@ -14,7 +14,7 @@ const components = {
     CCol: Col
 }
 
-const install = (app: App<any>): void => {
+const install = (app: App<Element>): void => {
     Object.keys(components).forEach((key) => {
         app.component(key, components[key])
     })
