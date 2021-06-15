@@ -11,7 +11,7 @@ export interface IBoxCenter {
   align: Boolean
 }
 export interface IBoxCenterClass {
-  flex: Boolean
+  'flex': Boolean
   'justify-center': Boolean
   'align-center': Boolean
 }
@@ -29,7 +29,7 @@ export default defineComponent({
   setup(props) {
     // init here
     const classObject: Ref<IBoxCenterClass> = ref({
-      flex: props.justify || props.align,
+      'flex': props.justify || props.align,
       'justify-center': props.justify,
       'align-center': props.align,
     })
