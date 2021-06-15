@@ -47,3 +47,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 </style>
 EOF
+cat > $DIRNAME/$NAME.spec.ts <<EOF
+import $NAME from './$NAME.vue'
+import { mount } from '@cypress/vue'
+import { cy } from 'local-cypress'
+
+describe('$NAME', () => {
+    it('first test', () => {
+        mount($NAME)
+    })
+})
+EOF
