@@ -6,16 +6,18 @@
 import axios from "axios";
 
 const service = axios.create({
-
+    baseURL: "http://rap2api.taobao.org/app/mock/285246"
 })
 
 service.interceptors.request.use(
     (config) => {
         return config
     })
-service.interceptors.request.use(
+service.interceptors.response.use(
     (response) => {
-        return response
+        const { data } = response
+        console.log(data)
+        return data
     }
 )
 

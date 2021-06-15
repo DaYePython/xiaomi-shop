@@ -8,8 +8,9 @@
   </c-row>
 </template>
 
-<script setup>
-
+<script lang="ts" setup>
+import { getUser } from "./api/index.ts";
+getUser()
 </script>
 
 <style lang="scss" scoped>

@@ -3,9 +3,9 @@ import { createApp } from 'vue'
 
 // base css
 import 'normalize.css/normalize.css'
-import 'style/index.scss'
+import '@style/index.scss'
 
-import layout from './plugin/layout'
+import layout from '@/plugins/layout'
 
 const app = createApp(App)
 app.use(layout)
