@@ -5,7 +5,12 @@
     "build": "vite build",
     "serve": "vite preview",
     "commit": "git add . && git cz",
-    "gen": "bash ./scripts/gc.sh"
+    "gen": "bash ./scripts/gc.sh",
+    "test-e2e": "cypress open",
+    "test-e2e-ci": "cypress run",
+    "test-ct": "cypress open-ct",
+    "test-ct-ci": "cypress run-ct",
+    "test": "yarn test-ct-ci && yarn test-e2e-ci"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -19,13 +24,17 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@cypress/vite-dev-server": "^2.0.0",
+    "@cypress/vue": "^3.0.0-beta.1",
     "@types/mockjs": "^1.0.3",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
     "cross-env": "^7.0.3",
+    "cypress": "^7.5.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.28.0",
     "husky": "^6.0.0",
+    "local-cypress": "^1.2.1",
     "sass": "^1.34.1",
     "typescript": "^4.3.2",
     "vite": "^2.3.7",

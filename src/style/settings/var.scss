@@ -1,6 +1,17 @@
 // 项目相关
 $primary-color: #ff6700 !default;
 
+// 字体颜色
+$text-primary-color: #333 !default;
+$text-second-color: #fff !default;
+$text-third-color: #ff6709 !default;
+$text-gray-color: #b0b0b0 !default;
+
+// 背景颜色
+$bg-primary-color: #f5f5f5;
+$bg-second-color: #fff;
+$bg-third-color: rgba(105, 101, 101, 0.6);
+
 // 通用相关 from tailwindcss
 // config from (tw-universal-tokens)[https://github.com/itaditya/tw-universal-tokens]
 // 字体

@@ -10,6 +10,11 @@
 5. ACSS 常用的原子类
 6. theme 维护主题相关
 
+## 测试
+
+###  组件测试
+组件测试我们使用**cypress** [查看更多](./docs/test/cypress.md)
+
 
 ## Q&A
 

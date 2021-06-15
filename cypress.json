@@ -1,0 +1,6 @@
+{
+  "pluginsFile": "tests/cypress/plugins/index.ts",
+  "testFiles": "**/*spec.*",
+  "componentFolder": "src",
+  "video": false
+}
