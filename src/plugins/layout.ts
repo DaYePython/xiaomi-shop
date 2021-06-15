@@ -8,6 +8,7 @@ import 'vant/lib/col/index.css'
 import 'vant/lib/row/index.css'
 
 import { App } from 'vue'
+import { WithInstall } from 'vant/lib/utils'
 
 const components = {
   CRow: Row,

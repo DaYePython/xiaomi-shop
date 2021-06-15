@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import BoxCenter from '@comp/BoxCenter/BoxCenter.vue'
-import { getUser } from '@/api/index.ts'
+import { getUser } from '@/api/index'
 getUser()
 </script>
 

@@ -12,15 +12,15 @@ let prodMock = true
 export default defineConfig({
   plugins: [
     vue(),
-    // viteMockServe({
-    //   mockPath: 'mock',
-    //   localEnabled: command === 'serve',
-    //   prodEnabled: command !== 'serve' && prodMock,
-    //   injectCode: `
-    //     import { setupProdMockServer } from './mockProdServer';
-    //     setupProdMockServer();
-    //   `,
-    // }),
+    viteMockServe({
+      mockPath: 'mock',
+      localEnabled: true,
+      prodEnabled: true && prodMock,
+      injectCode: `
+        import { setupProdMockServer } from 'mockProdServer.ts';
+        setupProdMockServer();
+      `,
+    }),
   ],
   css: {
     preprocessorOptions: {

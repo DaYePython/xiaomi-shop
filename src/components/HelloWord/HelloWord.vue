@@ -3,14 +3,15 @@
     <slot></slot>
   </div>
 </template>
-<script lang="ts">
+<script lang='ts'>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'HelloWorld',
-  props: {},
+  name: 'HelloWord',
+  props: { },
   setup(props) {
     // init here
   },
 })
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

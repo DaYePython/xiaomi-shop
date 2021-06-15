@@ -52,9 +52,17 @@ import $NAME from './$NAME.vue'
 import { mount } from '@cypress/vue'
 import { cy } from 'local-cypress'
 
-describe('$NAME', () => {
+describe('$NAME', asnc () => {
     it('first test', () => {
-        mount($NAME)
+        await mount($NAME)
     })
+})
+EOF
+cat > $DIRNAME/$NAME.test.ts <<EOF
+import { mount } from '@vue/test-utils'
+import $NAME from './$NAME.vue'
+ 
+test('displays message', async () => {
+  const wrapper = await mount($NAME)
 })
 EOF
