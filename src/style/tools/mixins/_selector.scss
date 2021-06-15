@@ -1,4 +1,3 @@
-
 /// @param {string} $old-context - 选择器
 /// @param {string} $new-context - 选择器
 /// @content
@@ -34,9 +33,9 @@
 /// @link Thanks:http://sassmeister.com/gist/ba63c6546349047ad73b
 
 @mixin context($old-context, $new-context) {
-    @at-root #{selector-replace(&, $old-context, $new-context)} {
-        @content;
-    }
+  @at-root #{selector-replace(&, $old-context, $new-context)} {
+    @content;
+  }
 }
 
 /// @param {list} $states - 选择器组
@@ -44,17 +43,17 @@
 /// //SCSS
 /// .tab {
 /// 	background: red;
-///	
+///
 ///     &:hover {
 ///     	background: white;
 ///     }
 ///
 ///   	.tab-link {
 ///     	color: white;
-/// 
+///
 ///         @include parentState(':hover', '.active') {
 ///         	color: pink;
-///         }            
+///         }
 /// 	}
 /// }
 /// //CSS
@@ -74,13 +73,13 @@
 ///	  	color: pink;
 ///	}
 @mixin parentState($states...) {
-    $parent: nth(nth(&, 1), (length(nth(&, 1))-1));
-    
-    @each $state in $states {    
-      @at-root #{selector-replace(&, $parent, ($parent#{$state}))} {
-          @content;
-      }
+  $parent: nth(nth(&, 1), (length(nth(&, 1))-1));
+
+  @each $state in $states {
+    @at-root #{selector-replace(&, $parent, ($parent#{$state}))} {
+      @content;
     }
+  }
 }
 
 /// 伪元素
@@ -132,21 +131,19 @@
 /// @author Guil Hernandez
 /// @link Thanks: http://blog.teamtreehouse.com/modular-pseudo-elements-sass
 
-@mixin pseudo-elements($el,$el-width,$el-height){
-	@if $el == "before" or $el == "after"{
-		&:#{$el}{
-			content: "";
-			position: absolute;
-			width: $el-width;
-			height: $el-height;
-			@content;
-		}
-	}
-	@else {
-		@warn "`#{$el}` is not a valid pseudo-element.";
-	}
+@mixin pseudo-elements($el, $el-width, $el-height) {
+  @if $el == 'before' or $el == 'after' {
+    &:#{$el} {
+      content: '';
+      position: absolute;
+      width: $el-width;
+      height: $el-height;
+      @content;
+    }
+  } @else {
+    @warn "`#{$el}` is not a valid pseudo-element.";
+  }
 }
-
 
 /// Parent Hover
 /// @example
@@ -189,8 +186,8 @@
 @mixin parent-hover() {
   $selector: &;
   @each $list in & {
-    $parent: nth($list,length($list)-1);
-    $selector: selector-replace($selector,$parent,$parent+':hover');
+    $parent: nth($list, length($list)-1);
+    $selector: selector-replace($selector, $parent, $parent + ':hover');
   }
   @at-root #{$selector} {
     @content;
@@ -236,7 +233,7 @@
     @error "#{$func-name} should not at root!";
   }
 
-  @if not $status or $status == "" {
+  @if not $status or $status == '' {
     @error "#{$func-name} parameter $status error";
   }
 
@@ -258,11 +255,9 @@
         } @else if $place == append {
           $result: append($item, $status);
         }
-      }
-      @else {
+      } @else {
         $result: append($result, $item);
       }
-
     }
 
     $new-selectors: append($new-selectors, $result, comma);
@@ -342,7 +337,6 @@
 // 5. Between
 // 6. Exactly
 
-
 // -----------------------------------------------------------------------------
 // 1. Last Simple Selector
 // -----------------------------------------------------------------------------
@@ -355,16 +349,15 @@
 ///   $result: _last-simple-selector(ul > li); // li
 
 @function _last-simple-selector($selector) {
-    $parsed: selector-parse($selector);
+  $parsed: selector-parse($selector);
 
-    @if length($parsed) > 1 {
-      @error '`#{$selector}` contains #{length($parsed)} selectors and the `_last-simple-selector()`function accepts only 1.';
-    }
-    $last-simple-selector: nth(nth($parsed, 1), -1);
+  @if length($parsed) > 1 {
+    @error '`#{$selector}` contains #{length($parsed)} selectors and the `_last-simple-selector()`function accepts only 1.';
+  }
+  $last-simple-selector: nth(nth($parsed, 1), -1);
 
-    @return $last-simple-selector;
+  @return $last-simple-selector;
 }
-
 
 // -----------------------------------------------------------------------------
 // 2. Build Quantity Selector
@@ -377,19 +370,19 @@
 /// @return {list}                         - The final quantity query selector
 
 @function _build-quantity-selector($selector-append, $last-selector) {
-    $quantity-selector: ();
+  $quantity-selector: ();
 
-    @each $s in & {
-        $last-simple-selector: '~' + if($last-selector, $last-selector, _last-simple-selector($s));
-        $sel: selector-append($s, $selector-append);
-        $sel2: selector-nest($sel, $last-simple-selector);
-        $quantity-selector: append($quantity-selector, $sel, 'comma');
-        $quantity-selector: append($quantity-selector, $sel2 , 'comma');
-    }
+  @each $s in & {
+    $last-simple-selector: '~'+
+      if($last-selector, $last-selector, _last-simple-selector($s));
+    $sel: selector-append($s, $selector-append);
+    $sel2: selector-nest($sel, $last-simple-selector);
+    $quantity-selector: append($quantity-selector, $sel, 'comma');
+    $quantity-selector: append($quantity-selector, $sel2, 'comma');
+  }
 
-    @return $quantity-selector;
+  @return $quantity-selector;
 }
-
 
 // -----------------------------------------------------------------------------
 // 3. At least
@@ -407,24 +400,25 @@
 ///   }
 
 @mixin at-least($count, $selector: null) {
-    $selector-append: ':nth-last-child(n+#{$count})';
+  $selector-append: ':nth-last-child(n+#{$count})';
 
-    @if type-of($count) != 'number' or not unitless($count) or $count < 1 {
-        @error '`#{$count}` is not a valid number for `at-least`';
-    }
+  @if type-of($count) != 'number' or not unitless($count) or $count < 1 {
+    @error '`#{$count}` is not a valid number for `at-least`';
+  }
 
-    @if $selector != null and (type-of($selector) != 'string' or length($selector) > 1) {
-        @error '`#{$selector}` is not a valid selector for `at-least`';
-    }
+  @if $selector !=
+    null and
+    (type-of($selector) != 'string' or length($selector) > 1)
+  {
+    @error '`#{$selector}` is not a valid selector for `at-least`';
+  }
 
-    $at-least-selector: _build-quantity-selector($selector-append, $selector);
+  $at-least-selector: _build-quantity-selector($selector-append, $selector);
 
-
-    @at-root #{$at-least-selector} {
-        @content;
-    }
+  @at-root #{$at-least-selector} {
+    @content;
+  }
 }
-
 
 // -----------------------------------------------------------------------------
 // 4. At most
@@ -442,24 +436,25 @@
 ///   }
 
 @mixin at-most($count, $selector: null) {
-    $selector-append: ':nth-last-child(-n+#{$count}):first-child';
+  $selector-append: ':nth-last-child(-n+#{$count}):first-child';
 
-    @if type-of($count) != 'number' or not unitless($count) or $count < 1 {
-        @error '`#{$count}` is not a valid number for `at-most`.';
-    }
+  @if type-of($count) != 'number' or not unitless($count) or $count < 1 {
+    @error '`#{$count}` is not a valid number for `at-most`.';
+  }
 
-    @if $selector != null and (type-of($selector) != 'string' or length($selector) > 1) {
-        @error '`#{$selector}` is not a valid selector for `at-most`';
-    }
+  @if $selector !=
+    null and
+    (type-of($selector) != 'string' or length($selector) > 1)
+  {
+    @error '`#{$selector}` is not a valid selector for `at-most`';
+  }
 
-    $at-most-selector: _build-quantity-selector($selector-append, $selector);
+  $at-most-selector: _build-quantity-selector($selector-append, $selector);
 
-
-    @at-root #{$at-most-selector} {
-        @content;
-    }
+  @at-root #{$at-most-selector} {
+    @content;
+  }
 }
-
 
 // -----------------------------------------------------------------------------
 // 5. Between
@@ -477,34 +472,34 @@
 ///     @include between(6, 10, '*') { color: blue; }
 ///   }
 
-
 @mixin between($first, $last, $selector: null) {
-    $selector-append: ':nth-last-child(n+#{$first}):nth-last-child(-n+#{$last}):first-child';
+  $selector-append: ':nth-last-child(n+#{$first}):nth-last-child(-n+#{$last}):first-child';
 
-    @if type-of($first) != 'number' or not unitless($first) or $first < 1 {
-        @error '`#{$first}` is not a valid number for `between`';
-    }
+  @if type-of($first) != 'number' or not unitless($first) or $first < 1 {
+    @error '`#{$first}` is not a valid number for `between`';
+  }
 
-    @if type-of($last) != 'number' or not unitless($last) or $last < 1 {
-        @error '`#{$last}` is not a valid number for `between`';
-    }
+  @if type-of($last) != 'number' or not unitless($last) or $last < 1 {
+    @error '`#{$last}` is not a valid number for `between`';
+  }
 
-    @if $first > $last {
-        @error '#{$first} can´t be larger that #{$last} for `between`';
-    }
+  @if $first > $last {
+    @error '#{$first} can´t be larger that #{$last} for `between`';
+  }
 
-    @if $selector != null and (type-of($selector) != 'string' or length($selector) > 1) {
-        @error '`#{$selector}` is not a valid selector for `between`';
-    }
+  @if $selector !=
+    null and
+    (type-of($selector) != 'string' or length($selector) > 1)
+  {
+    @error '`#{$selector}` is not a valid selector for `between`';
+  }
 
-    $between-selector: _build-quantity-selector($selector-append, $selector);
+  $between-selector: _build-quantity-selector($selector-append, $selector);
 
-
-    @at-root #{$between-selector} {
-        @content;
-    }
+  @at-root #{$between-selector} {
+    @content;
+  }
 }
-
 
 // -----------------------------------------------------------------------------
 // 6. Exactly
@@ -522,36 +517,32 @@
 ///   }
 
 @mixin exactly($count, $selector: null) {
-    $selector-append: ':nth-last-child(#{$count}):first-child';
+  $selector-append: ':nth-last-child(#{$count}):first-child';
 
-    @if type-of($count) != 'number' or not unitless($count) or $count < 1 {
-        @error '`#{$count}` is not a valid number for `exactly`';
-    }
+  @if type-of($count) != 'number' or not unitless($count) or $count < 1 {
+    @error '`#{$count}` is not a valid number for `exactly`';
+  }
 
-    @if $selector != null and (type-of($selector) != 'string' or length($selector) > 1) {
-        @error '`#{$selector}` is not a valid selector for `exactly`';
-    }
+  @if $selector !=
+    null and
+    (type-of($selector) != 'string' or length($selector) > 1)
+  {
+    @error '`#{$selector}` is not a valid selector for `exactly`';
+  }
 
-    $exactly-selector: _build-quantity-selector($selector-append, $selector);
+  $exactly-selector: _build-quantity-selector($selector-append, $selector);
 
-
-    @at-root #{$exactly-selector} {
-        @content;
-    }
+  @at-root #{$exactly-selector} {
+    @content;
+  }
 }
 
-
-
-
 @mixin first($num) {
-
   @if $num == 1 {
     &:first-child {
       @content;
     }
-  }
-
-  @else {
+  } @else {
     &:nth-child(-n + #{$num}) {
       @content;
     }
@@ -559,45 +550,44 @@
 }
 
 @mixin last($num) {
-   &:nth-last-child(-n + #{$num}) {
+  &:nth-last-child(-n + #{$num}) {
     @content;
   }
 }
 
 @mixin after-first($num) {
-  &:nth-child(n+#{$num + 1}) {
+  &:nth-child(n + #{$num + 1}) {
     @content;
-   }
+  }
 }
 
 @mixin from-end($num) {
   &:nth-last-child(#{$num}) {
-   @content;
-  }
-}
-
-@mixin between($first,$last) {
-  &:nth-child(n+#{$first}):nth-child(-n+#{$last}) {
     @content;
   }
 }
 
-@mixin even-between($first,$last) {
+@mixin between($first, $last) {
+  &:nth-child(n + #{$first}):nth-child(-n + #{$last}) {
+    @content;
+  }
+}
+
+@mixin even-between($first, $last) {
   &:nth-child(even):nth-child(n + #{$first}):nth-child(-n + #{$last}) {
     @content;
   }
 }
-@mixin odd-between($first,$last) {
+@mixin odd-between($first, $last) {
   &:nth-child(odd):nth-child(n + #{$first}):nth-child(-n + #{$last}) {
     @content;
   }
 }
-@mixin n-between($num,$first,$last) {
+@mixin n-between($num, $first, $last) {
   &:nth-child(#{$num}n):nth-child(n + #{$first}):nth-child(-n + #{$last}) {
     @content;
   }
 }
-
 
 @mixin all-but($num) {
   &:not(:nth-child(#{$num})) {
@@ -635,17 +625,15 @@
   }
 }
 
-
 // impair only
 @mixin middle($num) {
-  &:nth-child(#{round($num/2)}){
+  &:nth-child(#{round($num/2)}) {
     @content;
   }
 }
 
-
 @mixin all-but-first-last($num) {
-  &:nth-child(n+#{$num}):nth-last-child(n+#{$num}){
+  &:nth-child(n + #{$num}):nth-last-child(n + #{$num}) {
     @content;
   }
 }
@@ -655,41 +643,42 @@
 
 @mixin first-of($limit) {
   &:nth-last-child(#{$limit}):first-child {
-   @content;
+    @content;
   }
 }
 
 @mixin last-of($limit) {
-  &:nth-of-type(#{$limit}):nth-last-of-type(1){
+  &:nth-of-type(#{$limit}):nth-last-of-type(1) {
     @content;
   }
 }
 
 @mixin at-least($num) {
-    $selector: &;
-    $child: nth(nth($selector, -1), -1);
-    &:nth-last-child(n + #{$num}),
-    &:nth-last-child(n + #{$num}) ~ #{$child} {
-        @content;
-    }
+  $selector: &;
+  $child: nth(nth($selector, -1), -1);
+  &:nth-last-child(n + #{$num}),
+  &:nth-last-child(n + #{$num}) ~ #{$child} {
+    @content;
+  }
 }
 
 @mixin at-most($num) {
-    $selector: &;
-    $child: nth(nth($selector, -1), -1);
-    &:nth-last-child(-n + #{$num}):first-child,
-    &:nth-last-child(-n + #{$num}):first-child ~ #{$child} {
-        @content;
-    }
+  $selector: &;
+  $child: nth(nth($selector, -1), -1);
+  &:nth-last-child(-n + #{$num}):first-child,
+  &:nth-last-child(-n + #{$num}):first-child ~ #{$child} {
+    @content;
+  }
 }
 
 @mixin in-between($min, $max) {
-    $selector: &;
-    $child: nth(nth($selector, -1), -1);
-    &:nth-last-child(n + #{$min}):nth-last-child(-n + #{$max}):first-child,
-    &:nth-last-child(n + #{$min}):nth-last-child(-n + #{$max}):first-child ~ #{$child} {
-      @content;
-    }
+  $selector: &;
+  $child: nth(nth($selector, -1), -1);
+  &:nth-last-child(n + #{$min}):nth-last-child(-n + #{$max}):first-child,
+  &:nth-last-child(n + #{$min}):nth-last-child(-n + #{$max}):first-child
+    ~ #{$child} {
+    @content;
+  }
 }
 
 // Using functions
@@ -697,12 +686,11 @@
   @for $i from 1 through $num {
     @if $direction == 'forward' {
       &:nth-child(#{$i}) {
-      z-index: orderIndex($i, $index, $direction);
-      @content;
+        z-index: orderIndex($i, $index, $direction);
+        @content;
+      }
     }
-
-    }
-  @if $direction == 'backward' {
+    @if $direction == 'backward' {
       &:nth-last-child(#{$i}) {
         z-index: orderIndex($i, $index, $direction);
         @content;
@@ -725,8 +713,8 @@
 /// li:nth-child(n+3):nth-child(-n+5) {
 ///  color: red;
 /// }
-@mixin select-range($start, $end){
-  &:nth-child(n+#{$start}):nth-child(-n+#{$end}){
+@mixin select-range($start, $end) {
+  &:nth-child(n + #{$start}):nth-child(-n + #{$end}) {
     @content;
   }
 }
@@ -746,20 +734,19 @@
 /// li:nth-last-child(3n+1):first-child ~ li {
 ///  color: green;
 /// }
-@mixin mod-list($mod, $remainder){
-  &:nth-last-child(#{$mod}n+#{$remainder}):first-child,
-  &:nth-last-child(#{$mod}n+#{$remainder}):first-child ~ & {
+@mixin mod-list($mod, $remainder) {
+  &:nth-last-child(#{$mod}n + #{$remainder}):first-child,
+  &:nth-last-child(#{$mod}n + #{$remainder}):first-child ~ & {
     @content;
   }
 }
 
 // Functions
-@function orderIndex($i, $index, $direction){
+@function orderIndex($i, $index, $direction) {
   @if $direction == 'forward' {
-    $i:$index + $i;
-  }
-  @else {
-    $i:$index - $i;
+    $i: $index + $i;
+  } @else {
+    $i: $index - $i;
   }
   @return $i;
 }

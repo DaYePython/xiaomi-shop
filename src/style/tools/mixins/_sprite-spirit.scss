@@ -7,7 +7,7 @@
 /// Set Dimensions
 /// @param {Number} $width [null] - 宽度
 /// @param {Number} $height [$width] - 高度
-/// @example 
+/// @example
 /// //SCSS
 /// .box {
 /// 	@include dimensions(100px,200px);
@@ -20,8 +20,8 @@
 /// @author Eliorshalev
 
 @mixin dimensions($width: null, $height: $width) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 /// Sprite to Animate Mixin
@@ -51,51 +51,52 @@
 /// @link https://eliorshalev.github.io/sprite-spirit/
 
 @mixin spriteSpirit(
-	$name,
-	$url,
-	$vertical,
-	$width,
-	$height,
-	$frameNum,
-	$duration: .8,
-	$iteration: 0,
-	$reverse: false) {
-		$single-Y-frame: $height / $frameNum;
-  		$single-X-frame: $width / $frameNum;
+  $name,
+  $url,
+  $vertical,
+  $width,
+  $height,
+  $frameNum,
+  $duration: 0.8,
+  $iteration: 0,
+  $reverse: false
+) {
+  $single-Y-frame: $height / $frameNum;
+  $single-X-frame: $width / $frameNum;
 
-  		background-image: url($url);
-  		background-repeat: no-repeat;
-  		background-size: $width $height;
-  		animation: #{$name} steps($frameNum);
-  		animation-duration: $duration + s;
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: $width $height;
+  animation: #{$name} steps($frameNum);
+  animation-duration: $duration + s;
 
-  		@if $iteration == 0 {
-    		animation-iteration-count: infinite;
-  		} @else {
-    		animation-iteration-count: $iteration;
-  		}
+  @if $iteration == 0 {
+    animation-iteration-count: infinite;
+  } @else {
+    animation-iteration-count: $iteration;
+  }
 
-  		@if $reverse == true {
-    		animation-direction: reverse;
-  		} @else {
-    		animation-direction: normal;
-  		}
+  @if $reverse == true {
+    animation-direction: reverse;
+  } @else {
+    animation-direction: normal;
+  }
 
-  		@if $vertical == true {
-    		@include dimensions($width: $width, $height: $single-Y-frame);
-    		background-position: 0 top;
-  		} @else {
-    		@include dimensions($width: $single-X-frame, $height: $height);
-    		background-position: left 0;
-  		}
+  @if $vertical == true {
+    @include dimensions($width: $width, $height: $single-Y-frame);
+    background-position: 0 top;
+  } @else {
+    @include dimensions($width: $single-X-frame, $height: $height);
+    background-position: left 0;
+  }
 
-  		@keyframes #{$name} {
-    		to {
-      			@if $vertical == true {
-        			background-position: 0 -#{$height};
-      			} @else {
-        			background-position: -#{$width} 0;
-      			}
-    		}
-  		}
+  @keyframes #{$name} {
+    to {
+      @if $vertical == true {
+        background-position: 0 -#{$height};
+      } @else {
+        background-position: -#{$width} 0;
+      }
+    }
+  }
 }

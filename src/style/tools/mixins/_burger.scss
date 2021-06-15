@@ -4,7 +4,6 @@
 // Licensed under MIT (http://joren.mit-license.org/)
 //-------------------------------------------------------------------------------------
 
-
 // Burger parts
 //
 // (---) top    -> &::before
@@ -50,47 +49,54 @@
 ///   top: 8px;
 /// }
 /// @author Joren Van Hee
-@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
-    $burger-height: $height !global;
-    $burger-gutter: $gutter !global;
+@mixin burger(
+  $width: 30px,
+  $height: 5px,
+  $gutter: 3px,
+  $color: #000,
+  $border-radius: 0,
+  $transition-duration: 0.3s
+) {
+  $burger-height: $height !global;
+  $burger-gutter: $gutter !global;
 
-    position: relative;
-    margin-top: $height + $gutter;
-    margin-bottom: $height + $gutter;
+  position: relative;
+  margin-top: $height + $gutter;
+  margin-bottom: $height + $gutter;
 
-    user-select: none;
+  user-select: none;
 
-    // 1. Fixes jagged edges in Firefox, see issue #10.
-    &,
-    &::before,
-    &::after {
-        display: block;
-        width: $width;
-        height: $height;
-        background-color: $color;
-        outline: 1px solid transparent; // 1
-        @if $border-radius != 0 {
-            border-radius: $border-radius;
-        }
-
-        transition-property: background-color, transform;
-        transition-duration: $transition-duration;
+  // 1. Fixes jagged edges in Firefox, see issue #10.
+  &,
+  &::before,
+  &::after {
+    display: block;
+    width: $width;
+    height: $height;
+    background-color: $color;
+    outline: 1px solid transparent; // 1
+    @if $border-radius != 0 {
+      border-radius: $border-radius;
     }
 
-    &::before, &::after {
-        position: absolute;
-        content: "";
-    }
+    transition-property: background-color, transform;
+    transition-duration: $transition-duration;
+  }
 
-    &::before {
-        top: -($height + $gutter);
-    }
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+  }
 
-    &::after {
-        top: $height + $gutter;
-    }
+  &::before {
+    top: -($height + $gutter);
+  }
+
+  &::after {
+    top: $height + $gutter;
+  }
 }
-
 
 /// Select parts of the burger
 /// @example
@@ -107,11 +113,11 @@
 ///  background-color: red;
 /// }
 @mixin burger-parts {
-    &,
-    &::before,
-    &::after {
-        @content;
-    }
+  &,
+  &::before,
+  &::after {
+    @content;
+  }
 }
 
 /// @example
@@ -126,9 +132,9 @@
 ///  background-color: red;
 /// }
 @mixin burger-top {
-    &::before {
-        @content;
-    }
+  &::before {
+    @content;
+  }
 }
 /// @example
 /// //SCSS
@@ -142,9 +148,9 @@
 ///  background-color: red;
 /// }
 @mixin burger-middle {
-    & {
-        @content;
-    }
+  & {
+    @content;
+  }
 }
 /// @example
 /// //SCSS
@@ -158,27 +164,27 @@
 ///  background-color: red;
 /// }
 @mixin burger-bottom {
-    &::after {
-        @content;
-    }
+  &::after {
+    @content;
+  }
 }
-
 
 /// Burger animations
 /// @param {String} $color - auto
 @mixin burger-to-cross($color: auto) {
-    & {
-        background-color: transparent;
-    }
-    @if ($color != auto) {
-        &::before, &::after {
-            background-color: $color;
-        }
-    }
-    &::before {
-        transform: translateY($burger-gutter + $burger-height) rotate(45deg);
-    }
+  & {
+    background-color: transparent;
+  }
+  @if ($color != auto) {
+    &::before,
     &::after {
-        transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+      background-color: $color;
     }
+  }
+  &::before {
+    transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+  }
+  &::after {
+    transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+  }
 }

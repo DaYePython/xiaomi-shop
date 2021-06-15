@@ -28,10 +28,9 @@
 /// }
 /// @link http://sassmeister.com/gist/92601e5f31bb71913d06
 @function am($module, $trait: false) {
-    @if $trait==false {
-        @return '[am-'+$module+']';
-    }
-    @else {
-        @return '[am-'+$module+'~="'+$trait+'"]';
-    }
+  @if $trait==false {
+    @return '[am-' + $module + ']';
+  } @else {
+    @return '[am-' + $module + '~="' + $trait + '"]';
+  }
 }

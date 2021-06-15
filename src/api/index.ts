@@ -1,3 +1,5 @@
-import service from "@utils/request";
+import service from '@utils/request'
 
-export const getUser = () => { service.get("/api/user") }
+export const getUser = () => {
+  service.get('/api/user')
+}

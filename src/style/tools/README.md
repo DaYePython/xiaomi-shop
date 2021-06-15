@@ -1,4 +1,5 @@
 # Tools
+
 使用 (sassMagic)[http://w3cplus.github.io/SassMagic/] 充当工具层
 
 ## sassMagic 简介
@@ -7,7 +8,7 @@
 
 1. 直接将(项目)[https://github.com/W3cplus/SassMagic]的**src**下载复制到**tools**
 2. 在**vite**引入
- 
+
    ```json
    // vite.config.json
 
@@ -17,11 +18,13 @@
         additonalData: `@import "@/style/tools/_sassMagic.scss";`
       }
     }
-  },
+   },
    ```
+
 3. 注释未定义文件, 后边我们自己重构, 先编译通过
 
-4.  测试
+4. 测试
+
 ```vue
 // App.vue
 <template>

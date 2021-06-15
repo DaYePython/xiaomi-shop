@@ -1,5 +1,5 @@
 /// 绘制三角形
-/// @param {String} $position 
+/// @param {String} $position
 /// @param {Number} $caret-width 三角形外宽度
 /// @param {Number} $border-width 三角形内宽度
 /// @param {String} $direction 三角形方向
@@ -34,17 +34,24 @@
 /// }
 /// @link http://lugolabs.com/caret
 
-@mixin caret($position,$caret-width,$border-width,$direction,$border-color,$background-color){
+@mixin caret(
+  $position,
+  $caret-width,
+  $border-width,
+  $direction,
+  $border-color,
+  $background-color
+) {
   position: $position;
-  
+
   &:before,
   &:after {
-    content:"";
+    content: '';
     position: absolute;
   }
   @if $direction == top {
     &:before {
-      top:0;
+      top: 0;
       left: 0;
       border-bottom: $caret-width solid $border-color;
       border-left: $caret-width solid transparent;
@@ -57,10 +64,9 @@
       border-left: ($caret-width - $border-width) solid transparent;
       border-right: ($caret-width - $border-width) solid transparent;
     }
-  }
-  @else if $direction == right {
+  } @else if $direction == right {
     &:before {
-      top:0;
+      top: 0;
       left: 0;
       border-left: $caret-width solid $border-color;
       border-top: $caret-width solid transparent;
@@ -73,10 +79,9 @@
       border-top: ($caret-width - $border-width) solid transparent;
       border-bottom: ($caret-width - $border-width) solid transparent;
     }
-  }
-  @else if $direction == bottom {
+  } @else if $direction == bottom {
     &:before {
-      top:0;
+      top: 0;
       left: 0;
       border-top: $caret-width solid $border-color;
       border-left: $caret-width solid transparent;
@@ -89,10 +94,9 @@
       border-left: ($caret-width - $border-width) solid transparent;
       border-right: ($caret-width - $border-width) solid transparent;
     }
-  } 
-  @else if $direction == left {
+  } @else if $direction == left {
     &:before {
-      top:0;
+      top: 0;
       left: 0;
       border-right: $caret-width solid $border-color;
       border-top: $caret-width solid transparent;

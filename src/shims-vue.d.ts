@@ -1,9 +1,7 @@
 /* eslint-disable import/no-duplicates */
 
 declare module '*.vue' {
+  import Vue from 'vue'
 
-    import Vue from 'vue';
-
-    export default Vue;
-
+  export default Vue
 }

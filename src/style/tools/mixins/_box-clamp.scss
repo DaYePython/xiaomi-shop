@@ -2,7 +2,7 @@
 /// @param  {number} $lines      [1] - 默认一行对于点点点结束
 /// @param  {number} $substract  [0] - 默认宽度为100% - 0
 /// @example
-/// 
+///
 /// //SCSS
 /// div {
 /// 	@include ellipsis;
@@ -34,18 +34,18 @@
 ///
 
 @mixin ellipsis($lines: 1, $substract: 0) {
-    @if $lines == 1 {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        width: 100% - $substract;
-    	overflow: hidden;
-    } @else {
-        overflow:hidden;
-	    display:-webkit-box;
-	    display:box;
-	    -webkit-line-clamp: $lines;
-	    line-clamp: $lines;
-	    -webkit-box-orient: vertical;
-	    box-orient: vertical;
-    }
+  @if $lines == 1 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100% - $substract;
+    overflow: hidden;
+  } @else {
+    overflow: hidden;
+    display: -webkit-box;
+    display: box;
+    -webkit-line-clamp: $lines;
+    line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+  }
 }

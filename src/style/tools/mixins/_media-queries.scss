@@ -21,7 +21,7 @@
 
   @each $key, $value in $args {
     @if $value {
-      $expr: "#{$expr} and (#{$key}: #{$value})";
+      $expr: '#{$expr} and (#{$key}: #{$value})';
     }
   }
 
@@ -49,7 +49,6 @@
   }
 }
 
-
 /// Media Queries for min screen
 /// @param {string} $min
 @mixin min-screen($min) {
@@ -63,7 +62,11 @@
 /// @param {string} $max
 /// @param {boolean} $orientation [false]
 @mixin screen-height($min, $max, $orientation: false) {
-  @include mq($min-height: $min, $max-height: $max, $orientation: $orientation) {
+  @include mq(
+    $min-height: $min,
+    $max-height: $max,
+    $orientation: $orientation
+  ) {
     @content;
   }
 }
@@ -99,10 +102,8 @@
   $min-width: false;
   $min-height: false;
 
-  $standards: ('720p', 1280px, 720px)
-              ('1080', 1920px, 1080px)
-              ('2K', 2048px, 1080px)
-              ('4K', 4096px, 2160px);
+  $standards: ('720p', 1280px, 720px) ('1080', 1920px, 1080px)
+    ('2K', 2048px, 1080px) ('4K', 4096px, 2160px);
 
   @each $s in $standards {
     @if $standard == nth($s, 1) {
@@ -254,42 +255,41 @@
 ///    font-size: 2rem;
 ///  }
 /// }
-@mixin media-queries( $qtype ) {
+@mixin media-queries($qtype) {
   $value: screen;
   $breakpoints: (
     // smartphones, portrait iPhone, portrait 480x320 phones (Android)
     // font-size of root is 16px
-    ( phone-portrait,     20rem,   30rem,   1),
+    (phone-portrait, 20rem, 30rem, 1),
     // smartphones, portrait iPhone, portrait 480x320 phones (Android)
-    ( phone-portrait-r,   20rem,   30rem,   2),
+    (phone-portrait-r, 20rem, 30rem, 2),
     // smartphones, Android phones, landscape iPhone
-    ( phone-landscape,    30rem,   37.5rem, 1 ),
+    (phone-landscape, 30rem, 37.5rem, 1),
     // smartphones, Android phones, landscape iPhone
-    ( phone-landscape-r,  30rem,   37.5rem, 2 ),
-    // portrait tablets, portrait iPad, e-readers (Nook/Kindle), 
+    (phone-landscape-r, 30rem, 37.5rem, 2),
+    // portrait tablets, portrait iPad, e-readers (Nook/Kindle),
     // landscape 800x480 phones (Android)
-    ( table-portrait,     37.5rem, 50rem,   1 ),
-    // portrait tablets, portrait iPad, e-readers (Nook/Kindle), 
+    (table-portrait, 37.5rem, 50rem, 1),
+    // portrait tablets, portrait iPad, e-readers (Nook/Kindle),
     // landscape 800x480 phones (Android)
-    ( table-portrait-r,   37.5rem, 50rem,   2 ),
+    (table-portrait-r, 37.5rem, 50rem, 2),
     // tablet, landscape iPad, lo-res laptops ands desktops
-    ( table-landscape,    50rem,   64rem,   1),
+    (table-landscape, 50rem, 64rem, 1),
     // tablet, landscape iPad, lo-res laptops ands desktops
-    ( table-landscape-r,  50rem,   64rem,   2),
+    (table-landscape-r, 50rem, 64rem, 2),
     // big landscape tablets, laptops, and desktops
-    ( large,              50rem,   80rem,   1),
+    (large, 50rem, 80rem, 1),
     // big landscape tablets, laptops, and desktops
-    ( large-r,            50rem,   80rem,   2),
+    (large-r, 50rem, 80rem, 2),
     // hi-res laptops and desktops
-    ( xlarge,             80rem,   100rem,  1),
+    (xlarge, 80rem, 100rem, 1),
     // hi-res laptops and desktops
-    ( xlarge-r,           80rem,   100rem,  2)
+    (xlarge-r, 80rem, 100rem, 2)
   );
 
   @each $item in $breakpoints {
     @if $qtype == nth($item, 1) {
-
-    @media #{$value} and (min-width: nth($item, 2))
+      @media #{$value} and (min-width: nth($item, 2))
       and (max-width: nth($item, 3))
       and (-webkit-min-device-pixel-ratio: nth($item, 4)) {
         @content;

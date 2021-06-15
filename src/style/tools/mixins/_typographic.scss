@@ -28,23 +28,27 @@
 ///    }
 ///  }
 @mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
-	& {
-		@each $property in $properties {
-			#{$property}: $min-value;
-		}
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
 
-		@media screen and (min-width: $min-vw) {
-			@each $property in $properties {
-				#{$property}: calc(#{$min-value} + #{strip-units($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-units($max-vw - $min-vw)}));
-			}
-		}
+    @media screen and (min-width: $min-vw) {
+      @each $property in $properties {
+        #{$property}: calc(
+          #{$min-value} +
+            #{strip-units($max-value - $min-value)} *
+            ((100vw - #{$min-vw}) / #{strip-units($max-vw - $min-vw)})
+        );
+      }
+    }
 
-		@media screen and (min-width: $max-vw) {
-			@each $property in $properties {
-				#{$property}: $max-value;
-			}
-		}
-	}
+    @media screen and (min-width: $max-vw) {
+      @each $property in $properties {
+        #{$property}: $max-value;
+      }
+    }
+  }
 }
 
 // Super easy to use Sass mixins to establish a typographic system with modular scale and vertical rhythm
@@ -69,22 +73,27 @@
 /// @author hiulit
 /// @link https://github.com/hiulit/Sassy-Gridlover/blob/master/sassy-gridlover/_sassy-gridlover.scss
 
-@mixin body($font-size: 18px,$base-line-height: 1.2,$base-font-size:16px, $unit: 'px'){
-	$line-height: round(($font-size * $base-line-height));
+@mixin body(
+  $font-size: 18px,
+  $base-line-height: 1.2,
+  $base-font-size: 16px,
+  $unit: 'px'
+) {
+  $line-height: round(($font-size * $base-line-height));
 
-	@if ($unit == 'px' or $unit == 'pxrem') {
-		font-size: $font-size * 1px;
-		line-height: $line-height * 1px;
-	}
+  @if ($unit == 'px' or $unit == 'pxrem') {
+    font-size: $font-size * 1px;
+    line-height: $line-height * 1px;
+  }
 
-	@if ($unit == 'rem' or $unit == 'pxrem'){
-		font-size: px2rem($font-size);
-		line-height: px2rem($line-height);
-	}
-	@if ($unit == "em") {
-		font-size: decimal-ceil(px2em($font-size,strip-units($base-font-size)),5);
-		line-height: decimal-ceil(px2em($line-height, $font-size), 5);
-	}
+  @if ($unit == 'rem' or $unit == 'pxrem') {
+    font-size: px2rem($font-size);
+    line-height: px2rem($line-height);
+  }
+  @if ($unit == 'em') {
+    font-size: decimal-ceil(px2em($font-size, strip-units($base-font-size)), 5);
+    line-height: decimal-ceil(px2em($line-height, $font-size), 5);
+  }
 }
 
 /// To use in headings `<h1> - <h4>`.
@@ -158,39 +167,51 @@
 ///     margin-top: 1.375rem;
 /// }
 
-@mixin heading($step, $unit: "px", $base-value: 18px, $scale-factor: 1.618, $base-line-height:1.2) {
-    $font-size: $base-value;
-    $scale: $scale-factor;
-    $computed-font-size: round($font-size * exponent($scale, $step));
-    $line-height: round($font-size * $base-line-height);
-    $lines: ceil($computed-font-size / $line-height);
-    $computed-line-height: $line-height * $lines;
+@mixin heading(
+  $step,
+  $unit: 'px',
+  $base-value: 18px,
+  $scale-factor: 1.618,
+  $base-line-height: 1.2
+) {
+  $font-size: $base-value;
+  $scale: $scale-factor;
+  $computed-font-size: round($font-size * exponent($scale, $step));
+  $line-height: round($font-size * $base-line-height);
+  $lines: ceil($computed-font-size / $line-height);
+  $computed-line-height: $line-height * $lines;
 
-    $margin-top: $line-height;
-    @if ($step > 1) {
-        $margin-top: $line-height * 2;
-    }
+  $margin-top: $line-height;
+  @if ($step > 1) {
+    $margin-top: $line-height * 2;
+  }
 
-    @if ($unit == "px" or $unit == "pxrem") {
-        font-size: $computed-font-size * 1px;
-        line-height: $computed-line-height * 1px;
-        margin-bottom: $line-height * 1px;
-        margin-top: $margin-top * 1px;
-    }
+  @if ($unit == 'px' or $unit == 'pxrem') {
+    font-size: $computed-font-size * 1px;
+    line-height: $computed-line-height * 1px;
+    margin-bottom: $line-height * 1px;
+    margin-top: $margin-top * 1px;
+  }
 
-    @if ($unit == "rem" or $unit == "pxrem") {
-        font-size: px2rem($computed-font-size);
-        line-height: px2rem($computed-line-height);
-        margin-bottom: px2rem($line-height);
-        margin-top: px2rem($margin-top);
-    }
+  @if ($unit == 'rem' or $unit == 'pxrem') {
+    font-size: px2rem($computed-font-size);
+    line-height: px2rem($computed-line-height);
+    margin-bottom: px2rem($line-height);
+    margin-top: px2rem($margin-top);
+  }
 
-    @if ($unit == "em") {
-        font-size: decimal-ceil(px2em($computed-font-size, strip-units($base-value)), 5);
-        line-height: decimal-ceil(px2em($computed-line-height, $computed-font-size), 5);
-        margin-bottom: decimal-ceil(px2em($line-height, $computed-font-size), 5);
-        margin-top: decimal-ceil(px2em($margin-top, $computed-font-size), 5);
-    }
+  @if ($unit == 'em') {
+    font-size: decimal-ceil(
+      px2em($computed-font-size, strip-units($base-value)),
+      5
+    );
+    line-height: decimal-ceil(
+      px2em($computed-line-height, $computed-font-size),
+      5
+    );
+    margin-bottom: decimal-ceil(px2em($line-height, $computed-font-size), 5);
+    margin-top: decimal-ceil(px2em($margin-top, $computed-font-size), 5);
+  }
 }
 
 /// To use in `<p>`, `<ul>`, `<ol>`, `<pre>`, `<table>`, `<blockquote>`, etc.
@@ -210,21 +231,21 @@
 ///    margin-top: 22px;
 /// }
 
-@mixin sgl-margins($unit: "px", $base-value: 18px, $base-line-height:1.2) {
-    $margin: round(strip-units($base-value) * $base-line-height);
+@mixin sgl-margins($unit: 'px', $base-value: 18px, $base-line-height: 1.2) {
+  $margin: round(strip-units($base-value) * $base-line-height);
 
-    @if ($unit == "px" or $unit == "pxrem") {
-        margin-bottom: $margin * 1px;
-        margin-top: $margin * 1px;
-    }
+  @if ($unit == 'px' or $unit == 'pxrem') {
+    margin-bottom: $margin * 1px;
+    margin-top: $margin * 1px;
+  }
 
-    @if ($unit == "rem" or $unit == "pxrem") {
-        margin-bottom: px2rem($margin);
-        margin-top: px2rem($margin);
-    }
+  @if ($unit == 'rem' or $unit == 'pxrem') {
+    margin-bottom: px2rem($margin);
+    margin-top: px2rem($margin);
+  }
 
-    @if ($unit == "em") {
-        margin-bottom: decimal-ceil(px2em($margin, strip-units($base-value)), 5);
-        margin-top: decimal-ceil(px2em($margin, strip-units($base-value)), 5);
-    }
+  @if ($unit == 'em') {
+    margin-bottom: decimal-ceil(px2em($margin, strip-units($base-value)), 5);
+    margin-top: decimal-ceil(px2em($margin, strip-units($base-value)), 5);
+  }
 }

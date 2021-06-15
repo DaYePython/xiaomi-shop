@@ -13,8 +13,14 @@
 //   </div>
 // </body>
 
-@mixin sticky-footer($footer-height, $root-selector: unquote("#root"), $root-footer-selector: unquote("#root_footer"), $footer-selector: unquote("#footer")) {
-  html, body {
+@mixin sticky-footer(
+  $footer-height,
+  $root-selector: unquote('#root'),
+  $root-footer-selector: unquote('#root_footer'),
+  $footer-selector: unquote('#footer')
+) {
+  html,
+  body {
     height: 100%;
   }
   #{$root-selector} {

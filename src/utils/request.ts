@@ -3,22 +3,19 @@
  *
  */
 
-import axios from "axios";
+import axios from 'axios'
 
 const service = axios.create({
-    baseURL: "http://rap2api.taobao.org/app/mock/285246"
+  baseURL: 'http://rap2api.taobao.org/app/mock/285246',
 })
 
-service.interceptors.request.use(
-    (config) => {
-        return config
-    })
-service.interceptors.response.use(
-    (response) => {
-        const { data } = response
-        console.log(data)
-        return data
-    }
-)
+service.interceptors.request.use((config) => {
+  return config
+})
+service.interceptors.response.use((response) => {
+  const { data } = response
+  console.log(data)
+  return data
+})
 
 export default service

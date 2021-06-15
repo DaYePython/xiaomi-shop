@@ -21,35 +21,35 @@
 const { startDevServer } = require('@cypress/vite-dev-server')
 
 export default (
-    on: (arg0: string, arg1: (options: any) => any) => void,
-    config: any,
+  on: (arg0: string, arg1: (options: any) => any) => void,
+  config: any,
 ) => {
-    // `on` is used to hook into various events Cypress emits
-    // `config` is the resolved Cypress config
+  // `on` is used to hook into various events Cypress emits
+  // `config` is the resolved Cypress config
 
-    const viteConfig: any = {
-        plugins: [],
-    }
+  const viteConfig: any = {
+    plugins: [],
+  }
 
-    viteConfig.esbuild = viteConfig.esbuild || {}
-    viteConfig.esbuild.jsxFactory = 'h'
-    viteConfig.esbuild.jsxFragment = 'Fragment'
-    viteConfig.logLevel = 'error'
-    viteConfig.resolve = {
-        alias: {
-            vue: 'vue/dist/vue.esm-bundler.js',
-        },
-    }
+  viteConfig.esbuild = viteConfig.esbuild || {}
+  viteConfig.esbuild.jsxFactory = 'h'
+  viteConfig.esbuild.jsxFragment = 'Fragment'
+  viteConfig.logLevel = 'error'
+  viteConfig.resolve = {
+    alias: {
+      vue: 'vue/dist/vue.esm-bundler.js',
+    },
+  }
 
-    on('dev-server:start', (options: any) => {
-        return startDevServer({ options, viteConfig })
-    })
+  on('dev-server:start', (options: any) => {
+    return startDevServer({ options, viteConfig })
+  })
 
-    return Object.assign({}, config, {
-        fixturesFolder: 'tests/cypress/fixtures',
-        integrationFolder: 'tests/cypress/specs',
-        screenshotsFolder: 'tests/cypress/screenshots',
-        videosFolder: 'tests/cypress/videos',
-        supportFile: 'tests/cypress/support/index.ts',
-    })
+  return Object.assign({}, config, {
+    fixturesFolder: 'tests/cypress/fixtures',
+    integrationFolder: 'tests/cypress/specs',
+    screenshotsFolder: 'tests/cypress/screenshots',
+    videosFolder: 'tests/cypress/videos',
+    supportFile: 'tests/cypress/support/index.ts',
+  })
 }

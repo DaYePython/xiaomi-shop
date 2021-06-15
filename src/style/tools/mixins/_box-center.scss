@@ -3,30 +3,30 @@
 /// @param  {[string]} $align      [center] 垂直对齐方向,[false] 垂直方向不设置
 /// @example
 /// //SCSS
-/// 
+///
 /// .justify-center {
 ///     @include box-center;
 /// }
-/// 
+///
 /// //CSS
-/// 
+///
 /// .justify-cnter {
 ///     display: flex;
 ///     justify-content: center;
 ///     align-items: center;
 /// }
-/// 
+///
 /// @author 大漠
 
-@mixin box-center($justify:center, $align: center) {
-    display:flex;
+@mixin box-center($justify: center, $align: center) {
+  display: flex;
 
-    @if($align !=false) {
-        align-items: $align;
-    }
-    @if($justify !=false) {
-        justify-content: $justify;
-    }
+  @if ($align !=false) {
+    align-items: $align;
+  }
+  @if ($justify !=false) {
+    justify-content: $justify;
+  }
 }
 
 /// 使用translate实现水平垂直居中
@@ -44,19 +44,16 @@
 ///   transform: translate3d(-50%, -50%, 0);
 /// }
 @mixin center-translate($direction: both) {
-    position: absolute;
-    @if $direction == both {
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0);
-    }
-    @else if $direction == horizontal {
-        left: 50%;
-        transform: translate3d(-50%, 0, 0);
-    }
-    @else if $direction == vertical {
-        top: 50%;
-        transform: translate3d(0, -50%, 0);
-    }
+  position: absolute;
+  @if $direction == both {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  } @else if $direction == horizontal {
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  } @else if $direction == vertical {
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+  }
 }
-

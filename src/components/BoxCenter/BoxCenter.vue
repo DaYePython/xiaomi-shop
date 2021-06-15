@@ -3,7 +3,7 @@
     <slot></slot>
   </div>
 </template>
-<script lang='ts'>
+<script lang="ts">
 import { Ref, ref, defineComponent } from 'vue'
 
 export interface IBoxCenter {
@@ -20,7 +20,7 @@ export default defineComponent({
   props: {
     justify: {
       type: Boolean,
-      default: true
+      default: true,
     },
     align: {
       type: Boolean,
@@ -29,12 +29,12 @@ export default defineComponent({
   setup(props) {
     // init here
     const classObject: Ref<IBoxCenterClass> = ref({
-      'flex': props.justify || props.align,
+      flex: props.justify || props.align,
       'justify-center': props.justify,
-      'align-center': props.align
+      'align-center': props.align,
     })
     return {
-      classObject
+      classObject,
     }
   },
 })
