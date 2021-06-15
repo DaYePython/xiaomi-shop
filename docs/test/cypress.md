@@ -8,6 +8,7 @@ yarn add @cypress/vite-dev-server @cypress/vue@next cypress
 yarn cypress open
 ```
 命令执行后, cypress会自动在项目目录上新建**cypress**, 里面有插件和示例, 我们需要将他移入**tests**文件夹
+将项目所有**js**改成**ts**
 
 ## 配置
 
