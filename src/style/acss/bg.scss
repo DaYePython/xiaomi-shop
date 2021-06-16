@@ -1,0 +1,6 @@
+// bg size
+@each $mode in (auto, cover, contain) {
+  [bg-#{$mode}] {
+    background-size: $mode;
+  }
+}

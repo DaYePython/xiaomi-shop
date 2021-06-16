@@ -1,10 +1,39 @@
 [flex] {
   display: flex;
 }
+
+// justify-items justify-self place-items place-content
+@each $mode in (center, start, end, stretch, auto) {
+  [justify-items-#{$mode}] {
+    justify-items: $mode;
+  }
+  [justify-self-#{$mode}] {
+    justify-self: $mode;
+  }
+  [place-items-#{$mode}] {
+    place-items: $mode;
+  }
+  [place-content-#{$mode}] {
+    place-content: $mode;
+  }
+  [place-self-#{$mode}] {
+    place-self: $mode;
+  }
+  [self-#{$mode}] {
+    align-self: $mode;
+  }
+}
 [justify-center] {
   justify-content: center;
 }
 
 [align-item-center] {
   align-items: center;
+}
+
+// position
+@each $position in (static, relative, absolute, fixed, sticky) {
+  [#{$position}] {
+    position: $position;
+  }
 }
