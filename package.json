@@ -19,6 +19,7 @@
     "*": "prettier -w -u"
   },
   "dependencies": {
+    "@icon-park/vue-next": "^1.3.3",
     "axios": "^0.21.1",
     "mockjs": "^1.1.0",
     "normalize.css": "^8.0.1",

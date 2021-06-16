@@ -1,5 +1,12 @@
 # xiaomi-shop
 
+## 技术栈
+
++ 图标方案选用字节跳动的
+  + [官网](https://iconpark.oceanengine.com/official)
+  + [github](https://github.com/bytedance/IconPark)
+  + (项目相关)(./docs/iconpark.md)
+
 ## css 架构方案
 
 项目采用 ITCSS 为主题 BEM ACSS 辅助的方案

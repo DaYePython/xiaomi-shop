@@ -5,6 +5,9 @@ import { createApp } from 'vue'
 import 'normalize.css/normalize.css'
 import '@style/index.scss'
 
+//icon-park
+import '@icon-park/vue-next/styles/index.css';
+
 import layout from '@/plugins/layout'
 
 const app = createApp(App)

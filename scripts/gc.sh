@@ -66,3 +66,6 @@ test('displays message', async () => {
   const wrapper = await mount($NAME)
 })
 EOF
+cat > $DIRNAME/README.md <<EOF
+# $NAME
+EOF

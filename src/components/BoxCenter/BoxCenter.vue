@@ -20,10 +20,10 @@ export default defineComponent({
   props: {
     justify: {
       type: Boolean,
-      default: true,
     },
     align: {
       type: Boolean,
+      default: true,
     },
   },
   setup(props) {
