@@ -6,7 +6,7 @@
     "serve": "vite preview",
     "commit": "git add . && git cz",
     "gen": "bash ./scripts/gc.sh",
-    "test-unit": "yarn jest",
+    "test-unit": "yarn jest --watch",
     "test-e2e": "cypress open",
     "test-e2e-ci": "cypress run",
     "test-ct": "cypress open-ct",
