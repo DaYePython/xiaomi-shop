@@ -20,9 +20,8 @@
 
 ## 测试
 
-### 组件测试
-
-组件测试我们使用**cypress** [查看更多](./docs/test/cypress.md)
++ 组件测试我们使用**cypress** [查看更多](./docs/test/cypress.md)
++ 单元测试使用**jest** [查看更多](./docs/test/jest.md)
 
 ## Q&A
 
