@@ -12,6 +12,14 @@ $bg-primary-color: #f5f5f5;
 $bg-second-color: #fff;
 $bg-third-color: rgba(105, 101, 101, 0.6);
 
+// 阴影
+// 商品卡片阴影
+$shadow-primary: 0 15px 30px rgba(0, 0, 0, 0.1) !default;
+
+// translate
+// 商品卡片上移效果
+$translate-y-2: translate3D(0, -2px, 0) !default;
+
 // 通用相关 from tailwindcss
 // config from (tw-universal-tokens)[https://github.com/itaditya/tw-universal-tokens]
 // 字体
