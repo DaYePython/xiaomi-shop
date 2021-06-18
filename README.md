@@ -29,3 +29,5 @@
 1. Q:**vite.config.json.css.preprocessorOptions.scss.additionalData** 导入 和**main.ts import**有什么区别
    A: 前者相当在每一个**scss**文件和`<style lang="scss"></style>`都导入一份, 适用于高频的**scss**导入;
    而后者在全局公共入口导入, 所有页面自然而然就会受到影响, 所以它适用于一些纯样式导入.
+   + **additionalData**: 适合于共享在整个css框架的内容, 比如**settings**层和**tool**层;
+   + **main.ts**适用于只在页面上起作用的样式, 比如**base**层, **acss**层和**theme**层.
