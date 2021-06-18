@@ -17,9 +17,9 @@
     "paths": {
       "@/*": ["src/*"],
       "@style/*": ["src/style/*"],
-      "@comp/*": ["src/style/components/*"],
-      "@utils/*": ["src/style/utils/*"],
-      "@views/*": ["src/style/views/*"]
+      "@comp/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
+      "@views/*": ["src/views/*"]
     }
   },
   "exclude": ["dist", "node_modules"],
