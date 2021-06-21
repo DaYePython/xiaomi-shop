@@ -1965,7 +1965,7 @@
     "@vue/compiler-dom" "3.1.1"
     "@vue/shared" "3.1.1"
 
-"@vue/devtools-api@^6.0.0-beta.10", "@vue/devtools-api@^6.0.0-beta.11":
+"@vue/devtools-api@^6.0.0-beta.11", "@vue/devtools-api@^6.0.0-beta.14":
   version "6.0.0-beta.14"
   resolved "https://registry.nlark.com/@vue/devtools-api/download/@vue/devtools-api-6.0.0-beta.14.tgz?cache=0&sync_timestamp=1623239831716&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fdevtools-api%2Fdownload%2F%40vue%2Fdevtools-api-6.0.0-beta.14.tgz#6ed2d6f8d66a9256c9ad04bfff08309ba87b9723"
   integrity sha1-btLW+NZqklbJrQS//wgwm6h7lyM=
@@ -8158,12 +8158,12 @@ vue-jest@^5.0.0-alpha.10:
     source-map "0.5.6"
     tsconfig "^7.0.0"
 
-vue-router@4:
-  version "4.0.8"
-  resolved "https://registry.nlark.com/vue-router/download/vue-router-4.0.8.tgz#55d4290a3122444edbc91a3cd2492bb1d0cef494"
-  integrity sha1-VdQpCjEiRE7byRo80kkrsdDO9JQ=
+vue-router@^4.0.9:
+  version "4.0.9"
+  resolved "https://registry.nlark.com/vue-router/download/vue-router-4.0.9.tgz#248496941b79c4c1010f6ebfcf235cd4267d85da"
+  integrity sha1-JISWlBt5xMEBD26/zyNc1CZ9hdo=
   dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.10"
+    "@vue/devtools-api" "^6.0.0-beta.14"
 
 vue-tsc@^0.1.7:
   version "0.1.7"
@@ -8171,6 +8171,11 @@ vue-tsc@^0.1.7:
   integrity sha1-/04rCjMCVk8BAzOcpaF2aYAaR5Y=
   dependencies:
     vscode-vue-languageservice "^0.25.17"
+
+vue3-lazyload@^0.2.2-beta:
+  version "0.2.2-beta"
+  resolved "https://registry.nlark.com/vue3-lazyload/download/vue3-lazyload-0.2.2-beta.tgz#c75df1a8553b60fbfd8324d083cb0e71c94dd26d"
+  integrity sha1-x13xqFU7YPv9gyTQg8sOcclN0m0=
 
 vue@^3.0.5:
   version "3.1.1"
