@@ -1,16 +1,21 @@
 // 项目相关
+// 尺寸
+$min-width: 1226px;
+
 $primary-color: #ff6700 !default;
+$second-color: #333 !default;
 
 // 字体颜色
-$text-primary-color: #333 !default;
+$text-primary-color: $second-color;
 $text-second-color: #fff !default;
-$text-third-color: #ff6709 !default;
+$text-third-color: $primary-color !default;
 $text-gray-color: #b0b0b0 !default;
 
 // 背景颜色
 $bg-primary-color: #f5f5f5;
 $bg-second-color: #fff;
 $bg-third-color: rgba(105, 101, 101, 0.6);
+$bg-fourth-color: $second-color;
 
 // 阴影
 // 商品卡片阴影
@@ -23,12 +28,8 @@ $translate-y-2: translate3D(0, -2px, 0) !default;
 // 通用相关 from tailwindcss
 // config from (tw-universal-tokens)[https://github.com/itaditya/tw-universal-tokens]
 // 字体
-$font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-  'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-$font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-$font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-  'Liberation Mono', 'Courier New', monospace;
+$font-sans: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei',
+  'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
 // 边框
 
 // 行高

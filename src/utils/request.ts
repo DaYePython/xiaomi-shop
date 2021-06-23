@@ -6,7 +6,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const service = axios.create({
-    //   baseURL: 'http://rap2api.taobao.org/app/mock/285246',
+    // baseURL: 'http://rap2api.taobao.org/app/mock/285246',
 })
 
 service.interceptors.request.use((config: AxiosRequestConfig) => {
