@@ -5,6 +5,7 @@ html {
 }
 body {
   min-width: $min-width;
+  transition: all 0.2s;
 }
 
 [container] {

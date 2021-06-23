@@ -45,6 +45,8 @@ export default defineComponent({
       },
 
     ])
+
+
     return {
       naves
     }
@@ -70,7 +72,6 @@ export default defineComponent({
       color: $text-second-color;
     }
     .user {
-      overflow: hidden;
       a {
         padding: 0 5px;
       }

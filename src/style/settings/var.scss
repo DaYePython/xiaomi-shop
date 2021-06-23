@@ -10,6 +10,7 @@ $text-primary-color: $second-color;
 $text-second-color: #fff !default;
 $text-third-color: $primary-color !default;
 $text-gray-color: #b0b0b0 !default;
+$text-black-color: #424242;
 
 // 背景颜色
 $bg-primary-color: #f5f5f5;
@@ -20,6 +21,7 @@ $bg-fourth-color: $second-color;
 // 阴影
 // 商品卡片阴影
 $shadow-primary: 0 15px 30px rgba(0, 0, 0, 0.1) !default;
+$shadow-second: 0 2px 10px rgba(0, 0, 0, 0.15);
 
 // translate
 // 商品卡片上移效果
