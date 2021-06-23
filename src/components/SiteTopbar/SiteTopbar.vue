@@ -4,7 +4,7 @@
       <li v-for="nav in naves" :key="nav.id" :title="nav.title">
         <a :href="nav.link">{{ nav.title }}</a>
       </li>
-      <li class="user">
+      <li class="user" flex align-item-center>
         <!-- TODO router-link login and register -->
         <a href="#">登录</a>
         <a href="#">注册</a>
